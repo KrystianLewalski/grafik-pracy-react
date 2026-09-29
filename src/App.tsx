@@ -3,9 +3,11 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
+import { getMonth } from './utils/dateHelpers'
 
 function App() {
   const [count, setCount] = useState(0)
+  console.log(getMonth(2025,1))
 
   return (
     <>
