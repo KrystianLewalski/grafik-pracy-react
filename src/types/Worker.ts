@@ -1,7 +1,8 @@
-import type { StandardShift, CustomShiftHours } from "./Shifts";
+import type { StandardShiftEntry, CustomShiftEntry } from "./Shifts";
 
  export interface Worker{
     id: string;
     name: string;
-    shift: StandardShift | CustomShiftHours;
+    shift: StandardShiftEntry | CustomShiftEntry;
+    
 }
