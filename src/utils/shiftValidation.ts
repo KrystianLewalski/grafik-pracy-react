@@ -15,7 +15,5 @@ export function isShiftValid(shift: StandardShiftEntry | CustomShiftEntry, dayOf
         }
     }
 
-
-
     return true
 }

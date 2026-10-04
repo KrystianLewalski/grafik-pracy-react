@@ -12,8 +12,6 @@ export function isWorkerDuplicate(workers: Worker[], worker: Worker): boolean {
 }
 
 export function isWorkerNumberBelowFour(workers: Worker[]): boolean {
-    return workers.some(() => {
-        if (workers.length < 4) return true
-        return false
-    });
+    if (workers.length < 4) return true
+    return false
 }

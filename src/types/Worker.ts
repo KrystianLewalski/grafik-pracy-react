@@ -4,5 +4,4 @@ import type { StandardShiftEntry, CustomShiftEntry } from "./Shifts";
     id: string;
     name: string;
     shift: StandardShiftEntry | CustomShiftEntry;
-    
 }
