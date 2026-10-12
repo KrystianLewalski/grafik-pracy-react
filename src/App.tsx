@@ -8,7 +8,6 @@ import { shiftFormat } from './utils/shiftFormat'
 
 function App() {
   const [count, setCount] = useState(0)
-
   return (
     <>
       <section id="center">
