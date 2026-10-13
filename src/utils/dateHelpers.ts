@@ -12,7 +12,7 @@ export function getWeekDay(firstDay: number): number {
     return firstDay === 0 ? 6 : firstDay - 1;
 }
 
-export function getMonth(year: number, month: number): Month {
+export function generateMonth(year: number, month: number): Month {
     // const firstDay = getFirstMonthDay(year, month);
     // const leadingEmptyDays = getWeekDay(firstDay);
     const daysInMonth = getDaysInMonth(year, month);
