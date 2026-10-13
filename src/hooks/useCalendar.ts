@@ -24,6 +24,9 @@ export function calendarReducer(state: Month, action: CalendarAction): Month {
             const updatedMonth = updatedDate.getMonth() + 1;
             return generateMonth(updatedYear, updatedMonth)
         }
+        case 'setMonth':{
+            return generateMonth(action.year, action.month)
+        }
     }
     throw Error('Unknown action: ' + action.type);
 }

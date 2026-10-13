@@ -9,7 +9,7 @@ import { calendarReducer } from './hooks/useCalendar'
 
 function App() {
   const [count, setCount] = useState(0)
-  console.log(calendarReducer(generateMonth(2025, 1), { type: "monthMove", moveNumber: -1 }))
+  console.log(calendarReducer(generateMonth(2025, 1), { type: "setMonth", year: 2026, month: 5 }))
   return (
     <>
       <section id="center">
