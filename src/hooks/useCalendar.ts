@@ -24,11 +24,21 @@ export function calendarReducer(state: Month, action: CalendarAction): Month {
             const updatedMonth = updatedDate.getMonth() + 1;
             return generateMonth(updatedYear, updatedMonth)
         }
-        case 'setMonth':{
+        case 'setMonth': {
             return generateMonth(action.year, action.month)
         }
+        case 'removeWorker': {
+            const removeUpdate = state.monthDays.map((monthDay) => {
+                if (monthDay.dayNumber === action.dayNumber) {
+                    return { ...monthDay, workers: monthDay.workers.filter((worker) => action.workerId !== worker.id)}
     }
-    throw Error('Unknown action: ' + action.type);
+    return monthDay
+})
+
+return { ...state, monthDays: removeUpdate }
+        }
+    }
+throw Error('Unknown action: ' + action.type);
 }
 
 export function useCalendar(): CalendarType {
