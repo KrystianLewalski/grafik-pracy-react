@@ -30,15 +30,31 @@ export function calendarReducer(state: Month, action: CalendarAction): Month {
         case 'removeWorker': {
             const removeUpdate = state.monthDays.map((monthDay) => {
                 if (monthDay.dayNumber === action.dayNumber) {
-                    return { ...monthDay, workers: monthDay.workers.filter((worker) => action.workerId !== worker.id)}
-    }
-    return monthDay
-})
+                    return { ...monthDay, workers: monthDay.workers.filter((worker) => action.workerId !== worker.id) }
+                }
+                return monthDay
+            })
 
-return { ...state, monthDays: removeUpdate }
+            return { ...state, monthDays: removeUpdate }
+        }
+        case 'changeWorker': {
+            const changeUpdate = state.monthDays.map((monthDay) => {
+                if (monthDay.dayNumber === action.dayNumber) {
+                    return {
+                        ...monthDay, workers: monthDay.workers.map((worker) => {
+                            if (worker.id === action.worker.id) {
+                                return action.worker
+                            }
+                            return worker
+                        })
+                    }
+                }
+                return monthDay
+            })
+            return { ...state, monthDays: changeUpdate }
         }
     }
-throw Error('Unknown action: ' + action.type);
+    throw Error('Unknown action: ' + action.type);
 }
 
 export function useCalendar(): CalendarType {
