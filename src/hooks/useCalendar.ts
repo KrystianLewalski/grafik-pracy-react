@@ -3,6 +3,7 @@ import type { CalendarType } from "../types/CalendarType";
 import { generateMonth } from "../utils/dateHelpers";
 import type { CalendarAction } from "../types/CalendarAction";
 import type { Month } from "../types/Month";
+import { shiftSort } from "../utils/shiftSort";
 
 
 export function calendarReducer(state: Month, action: CalendarAction): Month {
@@ -53,8 +54,22 @@ export function calendarReducer(state: Month, action: CalendarAction): Month {
             })
             return { ...state, monthDays: changeUpdate }
         }
+        case 'addWorker': {
+            const addUpdate = state.monthDays.map((monthDay) => {
+                if (monthDay.dayNumber === action.dayNumber) {
+                    return {
+                        ...monthDay, workers: shiftSort([...monthDay.workers, action.worker])
+                    }
+                }
+                return monthDay
+            })
+            return { ...state, monthDays: addUpdate }
+        }
+        default: {
+            const _exhaustiveCheck: never = action
+            throw Error("Nieznana akcja: " + JSON.stringify(_exhaustiveCheck))
+        }
     }
-    throw Error('Unknown action: ' + action.type);
 }
 
 export function useCalendar(): CalendarType {
