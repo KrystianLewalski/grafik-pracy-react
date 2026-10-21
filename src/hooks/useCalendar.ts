@@ -1,4 +1,4 @@
-import { useState, useReducer } from "react";
+import { useReducer } from "react";
 import type { CalendarType } from "../types/CalendarType";
 import { generateMonth } from "../utils/dateHelpers";
 import type { CalendarAction } from "../types/CalendarAction";
@@ -72,9 +72,14 @@ export function calendarReducer(state: Month, action: CalendarAction): Month {
     }
 }
 
+function createInitialMonth(): Month {
+    const initialDate = new Date()
+    const initialYear = initialDate.getFullYear();
+    const initialMonth = initialDate.getMonth() + 1;
+    return generateMonth(initialYear, initialMonth)
+}
+
 export function useCalendar(): CalendarType {
-    const [year, setYear] = useState(new Date().getFullYear());
-    const [month, setMonth] = useState(new Date().getMonth() + 1);
-    const currentMonth = generateMonth(year, month)
-    return { year, setYear, month, setMonth, currentMonth }
+    const [state, dispatch] = useReducer(calendarReducer, null, createInitialMonth);
+    return { currentMonth: state, dispatch }
 }

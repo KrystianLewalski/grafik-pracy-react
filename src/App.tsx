@@ -3,13 +3,10 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
-import { generateMonth } from './utils/dateHelpers'
-import { shiftFormat } from './utils/shiftFormat'
-import { calendarReducer } from './hooks/useCalendar'
+
 
 function App() {
   const [count, setCount] = useState(0)
-  console.log(calendarReducer(generateMonth(2025, 1), { type: "setMonth", year: 2026, month: 5 }))
   return (
     <>
       <section id="center">

@@ -1,10 +1,8 @@
-import { type Dispatch, type SetStateAction } from "react";
+import { type Dispatch } from "react";
 import type { Month } from "./Month";
+import type { CalendarAction } from "./CalendarAction";
 
 export interface CalendarType {
-    year: number;
-    setYear: Dispatch<SetStateAction<number>>;
-    month: number;
-    setMonth: Dispatch<SetStateAction<number>>;
+    dispatch: Dispatch<CalendarAction>;
     currentMonth: Month;
 }
